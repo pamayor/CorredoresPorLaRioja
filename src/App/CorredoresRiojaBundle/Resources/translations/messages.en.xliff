@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="es" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>menu.zona_corre</source>
+                <target>Runners area</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>menu.zona_organiza</source>
+                <target>Organizations area</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>contacto</source>
+                <target>Contact</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>menu.portada</source>
+                <target>Home</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>menu.carreras</source>
+                <target>Races</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>menu.mis_carreras</source>
+                <target>My races</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>menu.in</source>
+                <target>Login</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>menu.perfil</source>
+                <target>Profile</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>menu.out</source>
+                <target>Logout</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>celebracion</source>
+                <target>Celebration date</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>distancia</source>
+                <target>Distance</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>organiza</source>
+                <target>Organize</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>incribe</source>
+                <target>Sign up</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>inscritos</source>
+                <target>Registrant</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>disculpa</source>
+                <target>Sorry, you can not register for this race.</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>clasifica</source>
+                <target>Classification</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>posicion</source>
+                <target>Position</target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>nombre</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>tiempo</source>
+                <target>Time</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>disputar_carrera</source>
+                <target>Races to dispute</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>disputada_carrera</source>
+                <target>Disputed races</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>hola</source>
+                <target>Hello</target>
+            </trans-unit>
+            <trans-unit id="23">
+                <source>msg_mis_carreras</source>
+                <target>below there are the races in which you are registered and the races you have played.</target>
+            </trans-unit>
+            <trans-unit id="24">
+                <source>no_disputar_carrera</source>
+                <target>You have no races to dispute.</target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source>desapuntarse</source>
+                <target>Leave</target>
+            </trans-unit>
+            <trans-unit id="26">
+                <source>no_disputada_carrera</source>
+                <target>You have no disputed races.</target>
+            </trans-unit>
+            <trans-unit id="27">
+                <source>organizada_carrera</source>
+                <target>Organized races</target>
+            </trans-unit>
+            <trans-unit id="28">
+                <source>nuevo_corredor</source>
+                <target>New runner</target>
+            </trans-unit>
+            <trans-unit id="29">
+                <source>bienvenido</source>
+                <target>Welcome to</target>
+            </trans-unit>
+            <trans-unit id="30">
+                <source>msg_bienvenida</source>
+                <target>is a website where riders of all levels can register for organized races in La Rioja. Below there are some of the careers you can sign up for.</target>
+            </trans-unit>
+            <trans-unit id="31">
+                <source>enhorabuena</source>
+                <target>Congratulations, </target>
+            </trans-unit>
+            <trans-unit id="32">
+                <source>registro_ok</source>
+                <target> you have registered in CorredoresPorLaRioja!</target>
+            </trans-unit>
+            <trans-unit id="33">
+                <source>enhorabuena_carrera</source>
+                <target>Congratulations, you have registered in the race </target>
+            </trans-unit>
+            <trans-unit id="34">
+                <source>actualiza_ok</source>
+                <target> you have correctly updated your data!</target>
+            </trans-unit>
+            <trans-unit id="35">
+                <source>mal_carrera</source>
+                <target>You already registered in the race </target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

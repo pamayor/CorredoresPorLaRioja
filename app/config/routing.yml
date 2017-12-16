@@ -1,0 +1,13 @@
+app_corredores_rioja:
+    resource: "@AppCorredoresRiojaBundle/Resources/config/routing.yml"
+    type: "be_simple_i18n"
+    prefix:
+        es: /corredores
+        en: /corredores
+
+app_organizadores_rioja:
+    resource: "@AppCorredoresRiojaBundle/Resources/config/routing_organizador.yml"
+    type: "be_simple_i18n"
+    prefix:
+        es: /organizadores
+        en: /organizadores

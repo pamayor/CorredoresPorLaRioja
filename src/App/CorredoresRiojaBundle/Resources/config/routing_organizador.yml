@@ -1,0 +1,21 @@
+organizador_login:
+    path : /login
+    defaults : { _controller: securitycontroller:loginOrganizacionAction }
+
+organizador_login_check:
+    path : /login_check
+
+organizador_logout:
+    path : /logout
+
+registro_organizador:
+    path: /registro
+    defaults: { _controller: organizadorescontroller:registroAction }
+
+organizadores_homepage:
+    path:     /
+    defaults: { _controller: organizadorescontroller:indexAction }
+
+perfil_organizador:
+    path: /perfil
+    defaults: { _controller: organizadorescontroller:perfilAction }

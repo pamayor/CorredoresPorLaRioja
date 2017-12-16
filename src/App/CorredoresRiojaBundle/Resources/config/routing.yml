@@ -1,0 +1,69 @@
+corredores_homepage:
+    locales:
+        es: /{_locale}/
+        en: /{_locale}/
+    defaults: { _controller: corredorescontroller:indexAction }
+    requirements:
+        _locale: en|es
+
+corredores_carreras:
+    locales:
+        es: /{_locale}/carreras
+        en: /{_locale}/races
+    defaults: { _controller: corredorescontroller:getCarrerasAction }
+    requirements:
+        _locale: en|es
+    
+corredores_detalle_carrera_slug:
+    locales:
+        es: /{_locale}/carrera/{slug}
+        en: /{_locale}/race/{slug}
+    defaults: { _controller: corredorescontroller:getDetalleCarreraPorSlugAction }
+    requirements:
+        _locale: en|es
+
+corredores_detalle_organizacion_slug:
+    locales:
+        es: /{_locale}/organizacion/{slug}
+        en: /{_locale}/organization/{slug}
+    defaults: { _controller: corredorescontroller:getDetalleOrganizacionPorSlugAction }
+    requirements:
+        _locale: en|es
+
+registro:
+    path: /{_locale}/registro
+    defaults: { _controller: corredorescontroller:registroAction }
+    requirements:
+        _locale: en|es
+
+usuario_login:
+    path : /{_locale}/login
+    defaults : { _controller: securitycontroller:loginAction }
+    requirements:
+        _locale: en|es
+
+usuario_login_check:
+    path : /login_check
+
+usuario_logout:
+    path : /logout
+
+corredores_mis_carreras:
+    path: /{_locale}/miscarreras
+    defaults: { _controller: corredorescontroller:getMisCarrerasAction }
+    requirements:
+        _locale: en|es
+
+inscribir:
+    path: /{_locale}/inscribir/{slug}
+    defaults: { _controller: corredorescontroller:inscribirAction }
+
+desapuntar:
+    path: /{_locale}/desapuntar/{id}
+    defaults: { _controller: corredorescontroller:desapuntarAction }
+
+perfil:
+    path: /{_locale}/perfil
+    defaults: { _controller: corredorescontroller:perfilAction }
+    requirements:
+        _locale: en|es

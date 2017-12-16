@@ -1,0 +1,26 @@
+{# Extendemos la plantilla base #}
+{% extends 'AppCorredoresRiojaBundle:Base:base.html.twig' %}
+
+{# Bloque título #}
+{% block title %} Corredores {% endblock %}
+
+{# El bloque del cuerpo #}
+{% block body %}
+    <div class="row col-md-offset-1 col-md-10 col-lg-offset-1 col-lg-10">
+        <ul class="nav nav-tabs nav-justified">
+            <li role="presentation" {% if active is defined and active == 'index' %}class="active"{% endif %}><a href="{{ path('corredores_homepage') }}">{{ 'menu.portada' | trans }}</a></li>
+            <li role="presentation" {% if active is defined and active == 'carreras' %}class="active"{% endif %}><a href="{{ path('corredores_carreras') }}">{{ 'menu.carreras' | trans }}</a></li>
+            <li role="presentation" {% if active is defined and active == 'miscarreras' %}class="active"{% endif %}><a href="{{ path('corredores_mis_carreras') }}">{{ 'menu.mis_carreras' | trans }}</a></li>
+            {% if not is_granted ( 'IS_AUTHENTICATED_FULLY' ) %}
+            <li role="presentation" {% if active is defined and active == 'login' %}class="active"{% endif %}><a href="{{ path('usuario_login') }}">{{ 'menu.in' | trans }}</a></li>
+            {% endif %}
+            {% if is_granted ( 'IS_AUTHENTICATED_FULLY' ) %}
+            <li role="presentation" {% if active is defined and active == 'perfil' %}class="active"{% endif %}><a href="{{ path('perfil') }}">{{ 'menu.perfil' | trans }}</a></li>
+            {% endif %}
+            {% if is_granted ( 'IS_AUTHENTICATED_FULLY' ) %}
+            <li role="presentation"><a href="{{ path('usuario_logout') }}">{{ 'menu.out' | trans }}</a></li>
+            {% endif %}
+        </ul>
+    </div>
+{% block content %}{% endblock%}
+{% endblock %}

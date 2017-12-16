@@ -1,0 +1,63 @@
+{# Extendemos la plantilla base #}
+{% extends 'AppCorredoresRiojaBundle:Corredores:zonacorredores.html.twig' %}
+
+{# Bloque título #}
+{% block title %} Carreras {% endblock %}
+
+{# El bloque del contenido #}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-offset-3 col-xs-6 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
+                <h3>{{ 'disputar_carrera' | trans }}</h3>
+            </div>
+        </div>
+        <div>
+            {% for carreraNoDisputada in carrerasNoDisputadas %}
+                <div>
+                    <div class="row">
+                        <div class="col-xs-offset-3 col-xs-6 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
+                            <h5><strong><a href="{{ path('corredores_detalle_carrera_slug', {'slug':carreraNoDisputada.slug}) }}">{{carreraNoDisputada.slug}}</a></strong></h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-offset-3 col-xs-2 col-sm-offset-3 col-sm-2 col-md-offset-3 col-md-2 col-lg-offset-3 col-lg-2">
+                            <img class="img-responsive" src="{{ asset(carreraNoDisputada.imagen) }}" alt="Carrera no disputada">
+                        </div>
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <p>{{carreraNoDisputada.descripcion}}</p>
+                            <p>{{carreraNoDisputada.fechaCelebracion | localizeddate('short')}}</p>
+                            <p><a class="btn btn-primary btn-xs" href="{{ path('inscribir', {'slug':carreraNoDisputada.slug}) }}" role="button">{{ 'incribe' | trans }}</a></p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <div class="col-xs-offset-3 col-xs-6 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
+                <h3>{{ 'disputada_carrera' | trans }}</h3>
+            </div>
+        </div>
+        <div>
+            {% for carreraDisputada in carrerasDisputadas %}
+                <div>
+                    <div class="row">
+                        <div class="col-xs-offset-3 col-xs-6 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
+                            <h5><strong><a href="{{ path('corredores_detalle_carrera_slug', {'slug':carreraDisputada.slug}) }}">{{carreraDisputada.slug}}</a></strong></h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-offset-3 col-xs-2 col-sm-offset-3 col-sm-2 col-md-offset-3 col-md-2 col-lg-offset-3 col-lg-2">
+                            <img class="img-responsive" src="{{ asset(carreraDisputada.imagen) }}" alt="Carrera disputada">
+                        </div>
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <p>{{carreraDisputada.descripcion}}</p>
+                            <p>{{carreraDisputada.fechaCelebracion | localizeddate('short')}}</p>
+                            <p><a href="{{ path('corredores_detalle_carrera_slug', {'slug':carreraDisputada.slug}) }}" class="btn btn-primary btn-xs" role="button">{{ 'clasifica' | trans }}</a></p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock%}

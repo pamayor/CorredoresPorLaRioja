@@ -1,0 +1,84 @@
+{# Extendemos la plantilla base #}
+{% extends 'AppCorredoresRiojaBundle:Corredores:zonacorredores.html.twig' %}
+
+{# Bloque título #}
+{% block title %} Carrera {{carrera.slug}} {% endblock %}
+
+{# El bloque del contenido #}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-offset-3 col-xs-6 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
+                <h3>{{carrera.slug}}</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-offset-3 col-xs-2 col-sm-offset-3 col-sm-2 col-md-offset-3 col-md-2 col-lg-offset-3 col-lg-2">
+                <img class="img-responsive" src="{{ asset(carrera.imagen) }}" alt="Carrera imagen">
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <p>{{carrera.nombre}}</p>
+                <p>{{ 'celebracion' | trans }}: {{carrera.fechaCelebracion | localizeddate('short')}}</p>
+                <p>{{ 'distancia' | trans }}: {{carrera.distancia}}</p>
+                <p>{{ 'organiza' | trans }}: <a href="{{ path('corredores_detalle_organizacion_slug', {'slug':carrera.organizacion.slug}) }}">{{carrera.organizacion.nombre}}</a></p>
+            </div>
+        </div>
+        {% if "now"|date('Y-m-d') <= carrera.fechaCelebracion|date('Y-m-d') %}
+            <div class="row">
+                <div class="col-xs-offset-3 col-xs-6 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
+                    <h5><strong>Tienes hasta el {{carrera.fechaCelebracion|localizeddate('long')}} para inscribirte.</strong></h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-offset-8 col-xs-1 col-sm-offset-8 col-sm-1 col-md-offset-8 col-md-1 col-lg-offset-8 col-lg-1">
+                    <a class="btn btn-primary btn-xs" href="{{ path('inscribir', {'slug':carrera.slug}) }}" role="button">{{ 'incribe' | trans }}</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-offset-3 col-xs-6 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
+                    <h5><strong>{{ 'inscritos' | trans }}</strong></h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-offset-3 col-xs-6 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
+                    <ul>
+                    {% for participante in participantes %}
+                        <li>{{participante.corredor.nombre}} {{participante.corredor.apellidos}}</li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        {% else %}
+            <div class="row">
+                <div class="col-xs-offset-3 col-xs-6 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
+                    <h5><strong>{{ 'disculpa' | trans }}</strong></h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-offset-3 col-xs-6 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
+                    <h5><strong>{{ 'clasifica' | trans }}</strong></h5>
+                </div>
+            </div>
+            <div class="table-responsive col-xs-offset-3 col-xs-6 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>{{ 'posicion' | trans }}</th>
+                            <th>{{ 'nombre' | trans }}</th>
+                            <th>{{ 'tiempo' | trans }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for participante in participantes | sortbyfield('tiempo') %}
+                            <tr>
+                                <td>{{loop.index}}</td>
+                                <td>{{participante.corredor.nombre}} {{participante.corredor.apellidos}}</td>
+                                <td>{{participante.tiempo | date('H:i:s')}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+    </div>
+{% endblock%}

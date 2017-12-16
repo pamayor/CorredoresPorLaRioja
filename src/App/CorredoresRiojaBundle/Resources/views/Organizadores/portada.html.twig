@@ -1,0 +1,78 @@
+{# Extendemos la plantilla base #}
+{% extends 'AppCorredoresRiojaBundle:Organizadores:zonaorganizadores.html.twig' %}
+
+{# Bloque título #}
+{% block title %} Portada {% endblock %}
+
+{# El bloque del contenido #}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-offset-3 col-xs-6 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
+                {% for mensaje in app.session.flashbag.get('info') %}
+                    <div class="alert alert-success alert-dismissable fade in top5">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        {{ mensaje }}
+                    </div>
+                    {% endfor %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-offset-3 col-xs-6 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
+                <h3>Bienvenido, estas son las carreras que has organizado</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-offset-3 col-xs-6 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
+                <h4>Carreras por disputar</h4>
+            </div>
+        </div>
+        <div>
+            {% for carreraNoDisputada in carrerasNoDisputadas %}
+                <div>
+                    <div class="row">
+                        <div class="col-xs-offset-3 col-xs-6 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
+                            <h5><strong>{{carreraNoDisputada.slug}}</strong></h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-offset-3 col-xs-2 col-sm-offset-3 col-sm-2 col-md-offset-3 col-md-2 col-lg-offset-3 col-lg-2">
+                            <img class="img-responsive" src="{{ asset(carreraNoDisputada.imagen) }}" alt="Carrera no disputada">
+                        </div>
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <p>{{carreraNoDisputada.descripcion}}</p>
+                            <p>{{carreraNoDisputada.fechaCelebracion | date('d/m/Y H:i:s')}}</p>
+                            <p><button type="button" class="btn btn-primary btn-xs">Modificar</button></p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <div class="col-xs-offset-3 col-xs-6 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
+                <h4>Carreras disputadas</h4>
+            </div>
+        </div>
+        <div>
+            {% for carreraDisputada in carrerasDisputadas %}
+                <div>
+                    <div class="row">
+                        <div class="col-xs-offset-3 col-xs-6 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
+                            <h5><strong>{{carreraDisputada.slug}}</strong></h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-offset-3 col-xs-2 col-sm-offset-3 col-sm-2 col-md-offset-3 col-md-2 col-lg-offset-3 col-lg-2">
+                            <img class="img-responsive" src="{{ asset(carreraDisputada.imagen) }}" alt="Carrera disputada">
+                        </div>
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <p>{{carreraDisputada.descripcion}}</p>
+                            <p>{{carreraDisputada.fechaCelebracion | date('d/m/Y H:i:s')}}</p>
+                            <p><button type="button" class="btn btn-primary btn-xs">Clasificaciones</button></p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock%}

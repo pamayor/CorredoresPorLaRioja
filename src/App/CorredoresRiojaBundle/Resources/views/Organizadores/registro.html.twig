@@ -1,0 +1,21 @@
+{# Extendemos la plantilla base #}
+{% extends 'AppCorredoresRiojaBundle:Organizadores:zonaorganizadores.html.twig' %}
+
+{# Bloque título #}
+{% block title %} Registro {% endblock %}
+
+{# El bloque del contenido #}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-offset-3 col-xs-6 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
+                <h3>Nuevo Organizador</h3>
+            </div>
+        </div>
+        <div class="col-xs-offset-3 col-xs-6 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
+            <form action="{{ path('registro_organizador') }}" method = "post" {{ form_enctype ( formulario ) }}>
+                {{ form_widget ( formulario ) }}
+            </form>
+        </div>
+    </div>
+{% endblock %}

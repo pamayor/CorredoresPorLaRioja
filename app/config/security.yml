@@ -1,0 +1,58 @@
+# To get started with security, check out the documentation:
+# https://symfony.com/doc/current/security.html
+security:
+    encoders:
+        App\CorredoresRiojaDomain\Model\Corredor :
+            algorithm: bcrypt
+            cost: 12
+        App\CorredoresRiojaBundle\Security\CorredorUser :
+            algorithm: bcrypt
+            cost: 12
+        App\CorredoresRiojaDomain\Model\Organizacion :
+            algorithm: bcrypt
+            cost: 12
+        App\CorredoresRiojaBundle\Security\OrganizadorUser:
+            algorithm: bcrypt
+            cost: 12
+
+    # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    providers:
+        corredores:
+            id : corredores_user_provider
+        organizadores:
+            id: organizadores_user_provider
+
+    firewalls:
+        corredor :
+            pattern: ^/corredores
+            provider: corredores
+            anonymous : ~
+            http_basic : ~
+            form_login :
+                login_path : usuario_login
+                check_path: usuario_login_check
+                default_target_path: /corredores/%locale%
+            logout :
+                path : usuario_logout
+                target: /corredores/%locale%
+        organizador :
+            pattern: ^/organizadores
+            provider: organizadores
+            anonymous : ~
+            http_basic : ~
+            form_login :
+                login_path : organizador_login
+                check_path: organizador_login_check
+                default_target_path: /organizadores
+            logout :
+                path : organizador_logout
+                target: /organizadores
+
+    access_control:
+        - { path: ^/corredores/(es|en)/miscarreras, roles: ROLE_CORREDOR }
+        - { path: ^/corredores/(es|en)/perfil, roles: ROLE_CORREDOR }
+        - { path: ^/corredores/(es|en)/inscribir, roles: ROLE_CORREDOR }
+        - { path: ^/corredores/(es|en)/desapuntar, roles: ROLE_CORREDOR }
+        - { path: ^/organizadores/login, roles : IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/organizadores/registro, roles : IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/organizadores/, roles: ROLE_ORGANIZADOR }

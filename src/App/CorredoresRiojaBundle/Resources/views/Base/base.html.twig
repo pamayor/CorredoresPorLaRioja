@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" lang="es-ES">
+        <title>{% block title %} Bienvenido {% endblock %}</title>
+        <meta name="description" content="Aplicación de prueba de Desarrollo de Aplicaciones para Internet; Máster en Informática; Universidad de La Rioja." lang="es-ES">
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('public/css/bootstrap.min.css') }}"/>
+            <link rel="stylesheet" href="{{ asset('public/css/style.css') }}"/>
+            <link rel="stylesheet" href="{{ asset('public/css/flag-icon.min.css') }}"/>
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="alternate" href="http://localhost:8000/corredores/es/" hreflang="es-es" />
+        <link rel="alternate" href="http://localhost:8000/runners/en/" hreflang="en" />
+    </head>
+    <body>
+    <header>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Carreras por La Rioja</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ path('corredores_homepage') }}">{{ 'menu.zona_corre' | trans }}</a></li>
+                    <li><a href="{{ path('organizadores_homepage') }}">{{ 'menu.zona_organiza' | trans }}</a></li>
+                    <li><a href="#">Intranet</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <a role="button" class="btn btn-default btn-xs navbar-btn" href="{{ path(app.request.get('_route'), { '_locale': 'es' }) }}"><span class="flag-icon flag-icon-es"></span>Español</a>
+                    <a role="button" class="btn btn-default btn-xs navbar-btn" href="{{ path(app.request.get('_route'), { '_locale': 'en' }) }}"><span class="flag-icon flag-icon-us"></span>English</a>
+                </ul>
+            </div>
+        </nav>
+    </header>
+{% block body %}{% endblock %}
+<footer class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="row">
+            <p class="col-xs-offset-1 col-xs-10 col-sm-offset-1 col-sm-10 col-md-offset-1 col-md-10 col-lg-offset-1 col-lg-10"><a href="mailto:pmayor@unirioja.es">{{ 'contacto' | trans }}</a> <span class="pull-right">© Copyright 2017. Paula Mayor.</span></p>
+        </div>
+    </div>
+</footer>
+{% block javascripts %}
+    <script src="{{ asset('public/js/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset('public/js/bootstrap.min.js') }}"></script>
+{% endblock %}
+</body>
+</html>

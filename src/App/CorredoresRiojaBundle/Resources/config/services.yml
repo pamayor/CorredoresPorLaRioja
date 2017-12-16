@@ -1,0 +1,49 @@
+services:
+    carrerarepository:
+        alias: carrerarepository.inmemory
+    carrerarepository.inmemory:
+        class: App\CorredoresRiojaInfrastructure\InMemoryRepository\CarreraRepository
+        public: false
+    carrerarepository.doctrine:
+        class: App\CorredoresRiojaInfrastructure\InDoctrineRepository\CarreraRepository
+        public: false
+    corredorrepository:
+        alias: corredorrepository.inmemory
+    corredorrepository.inmemory:
+        class: App\CorredoresRiojaInfrastructure\InMemoryRepository\CorredorRepository
+        public: false
+    corredorrepository.doctrine:
+        class: App\CorredoresRiojaInfrastructure\InDoctrineRepository\CorredorRepository
+        public: false
+    organizacionrepository:
+        alias: organizacionrepository.inmemory
+    organizacionrepository.inmemory:
+        class: App\CorredoresRiojaInfrastructure\InMemoryRepository\OrganizacionRepository
+        public: false
+    organizacionrepository.doctrine:
+        class: App\CorredoresRiojaInfrastructure\InDoctrineRepository\OrganizacionRepository
+        public: false
+    participanterepository:
+        alias: participanterepository.inmemory
+    participanterepository.inmemory:
+        class: App\CorredoresRiojaInfrastructure\InMemoryRepository\ParticipanteRepository
+        public: false
+    participanterepository.doctrine:
+        class: App\CorredoresRiojaInfrastructure\InDoctrineRepository\ParticipanteRepository
+        public: false
+    corredores_user_provider:
+        class : App\CorredoresRiojaBundle\Security\CorredorUserProvider
+        arguments : ["@doctrine.orm.entity_manager"]
+    corredorescontroller:
+        class : App\CorredoresRiojaBundle\Controller\CorredoresController
+        arguments : [ @twig, "@doctrine.orm.entity_manager", "@security.encoder_factory", "@security.token_storage", "@form.factory", "@router", "@translator", "@mailer"]
+    securitycontroller:
+        class : App\CorredoresRiojaBundle\Controller\SecurityController
+        arguments : [ @twig, "@security.authentication_utils"]
+    organizadores_user_provider:
+        class : App\CorredoresRiojaBundle\Security\OrganizadorUserProvider
+        arguments : ["@doctrine.orm.entity_manager"]
+    organizadorescontroller:
+        class : App\CorredoresRiojaBundle\Controller\OrganizacionController
+        arguments : [ @twig, "@doctrine.orm.entity_manager", "@security.encoder_factory", "@security.token_storage", "@form.factory", "@router"]
+        

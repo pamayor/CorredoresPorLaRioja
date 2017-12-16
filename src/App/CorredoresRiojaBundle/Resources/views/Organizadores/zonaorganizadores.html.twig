@@ -1,0 +1,19 @@
+{# Extendemos la plantilla base #}
+{% extends 'AppCorredoresRiojaBundle:Base:base.html.twig' %}
+
+{# Bloque título #}
+{% block title %} Organizadores {% endblock %}
+
+{# El bloque del cuerpo #}
+{% block body %}
+    <div class="row col-md-offset-1 col-md-10 col-lg-offset-1 col-lg-10">
+        <ul class="nav nav-tabs nav-justified">
+            <li role="presentation" {% if active is defined and active == 'index' %}class="active"{% endif %}><a href="{{ path('organizadores_homepage') }}">Portada</a></li>
+            <li role="presentation" {% if active is defined and active == 'perfil' %}class="active"{% endif %}><a href="{{ path('perfil_organizador') }}">Perfil</a></li>
+            {% if is_granted ( 'IS_AUTHENTICATED_FULLY' ) %}
+            <li role="presentation"><a href="{{ path('organizador_logout') }}">Cerrar sesión</a></li>
+            {% endif %}
+        </ul>
+    </div>
+{% block content %}{% endblock%}
+{% endblock %}

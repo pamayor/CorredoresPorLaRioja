@@ -1,0 +1,21 @@
+{# Extendemos la plantilla base #}
+{% extends 'AppCorredoresRiojaBundle:Corredores:zonacorredores.html.twig' %}
+
+{# Bloque título #}
+{% block title %} Error {% endblock %}
+
+{# El bloque del contenido #}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-offset-3 col-xs-6 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
+                <h3>Página no encontrada {{ status_code }} - {{ status_text }}</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-offset-3 col-xs-6 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
+                <p>No se ha podido localizar la página solicitada. <a href="{{ path('corredores_homepage') }}">Vuelve al inicio</a></p>
+            </div>
+        </div>
+    </div>
+{% endblock%}
